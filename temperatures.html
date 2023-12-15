@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codingame - Températures</title>
+</head>
+
+<body>
+    <h1>Jeu Codingame - Températures</h1>
+
+
+    <script>
+        let temperatures = [10, -2, 45, -25, 2, -8];
+
+        // Initialiser plusProche
+        let plusProche = 1000;
+
+        // Arrêt du programme si le tableau est vide
+        if(temperatures.length === 0){
+            plusProche = 0;
+            console.log("Le programme s'arrête car le tableau est vide, on affichera donc " + plusProche + " degrés.");
+        }
+
+        // Parcourir les températures dans le tableau
+        for(let temperature of temperatures){
+            // Arrêt du programme si le tableau est vide OU si l'une des températures est égale à 0
+            if (temperature === 0){
+                plusProche = temperature;
+                console.log("Le programme s'arrête car l'une des températures fournies est " + plusProche + " degrés.");
+                break;
+            }
+
+            // Calculer la différence entre la température et 0
+            let diff = Math.abs(temperature);
+            let diffPlusProche = Math.abs(plusProche);
+
+            // Si la différence testée est plus petite que la différence enregistrée, alors mettre à jour plusProche
+            if(diff < diffPlusProche) {
+                plusProche = temperature;
+            } else if (diff === diffPlusProche) {
+                if (temperature > 0) {
+                    plusProche = temperature;
+                }
+            }
+        }
+        console.log(plusProche);
+    </script>
+</body>
+
+</html>
